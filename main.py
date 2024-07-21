@@ -32,7 +32,7 @@ app.add_middleware(BrotliMiddleware)
 
 
 # https://cdn.grand-ant.com/cdn-cgi/image/w=500,f=webp/file/dkts-main/media/plays/little-red-riding-hood/photos/7.jpg
-@app.get('/{full_path:path}')
+@app.get('/images/{full_path:path}')
 async def fetch_image(full_path: str):
     if os.path.exists(f'./{full_path}'):
         return FileResponse(f'./{full_path}')
