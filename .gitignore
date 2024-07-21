@@ -1,0 +1,9 @@
+# PyCharm folders
+.idea/
+venv/
+
+# Other files and folders
+poetry.lock
+
+# Local images
+cdn-cgi/
