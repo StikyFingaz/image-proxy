@@ -1,9 +1,9 @@
-import os
-from brotli_asgi import BrotliMiddleware
+# import os
+# from brotli_asgi import BrotliMiddleware
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse, RedirectResponse
-import httpx
+# from fastapi.responses import FileResponse, RedirectResponse
+# import httpx
 
 app = FastAPI()
 
