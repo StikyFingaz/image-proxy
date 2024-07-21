@@ -28,7 +28,7 @@ app.add_middleware(
 )
 
 # Add BrotliMiddleware to enable brotli compression
-app.add_middleware(BrotliMiddleware)
+# app.add_middleware(BrotliMiddleware)
 
 
 @app.get('/')
@@ -37,23 +37,23 @@ async def hello_world():
 
 
 # https://cdn.grand-ant.com/cdn-cgi/image/w=500,f=webp/file/dkts-main/media/plays/little-red-riding-hood/photos/7.jpg
-@app.get('/images/{full_path:path}')
-async def fetch_image(full_path: str):
-    if os.path.exists(f'./{full_path}'):
-        return FileResponse(f'./{full_path}')
-
-    return await request_image(full_path)
-
-
-@app.post('/{full_path}')
-async def request_image(full_path: str):
-    base_url = 'https://cdn.grand-ant.com'
-    async with httpx.AsyncClient() as client:
-        response = await client.get(f'{base_url}/{full_path}')
-
-    local_dir = os.path.dirname(f'{full_path}/')
-    os.makedirs(os.path.dirname(local_dir), exist_ok=True)
-    with open(f'./{full_path}', "wb") as file:
-        file.write(response.content)
-
-    return RedirectResponse(f'{base_url}/{full_path}')
+# @app.get('/images/{full_path:path}')
+# async def fetch_image(full_path: str):
+#     if os.path.exists(f'./{full_path}'):
+#         return FileResponse(f'./{full_path}')
+#
+#     return await request_image(full_path)
+#
+#
+# @app.post('/{full_path}')
+# async def request_image(full_path: str):
+#     base_url = 'https://cdn.grand-ant.com'
+#     async with httpx.AsyncClient() as client:
+#         response = await client.get(f'{base_url}/{full_path}')
+#
+#     local_dir = os.path.dirname(f'{full_path}/')
+#     os.makedirs(os.path.dirname(local_dir), exist_ok=True)
+#     with open(f'./{full_path}', "wb") as file:
+#         file.write(response.content)
+#
+#     return RedirectResponse(f'{base_url}/{full_path}')
